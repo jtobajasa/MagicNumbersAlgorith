@@ -98,3 +98,37 @@ def selectGuess(numberList, feedbacksTable):
             bestGuess = guess
     
     return bestGuess
+
+
+'''
+Statistical functions
+'''
+
+def average(numGuessesList, numSimulations):
+    '''
+    Calculates the average of guesses needed to break the code through all simulations and print the result
+    '''
+    average = sum(numGuessesList)/numSimulations
+    print(f"Simulation of {numSimulations} games completed.")
+    print(f"The average tries needed to guess the number is: {average:.2f}")
+
+def mode(numGuessesList):
+    '''
+    Calculates the mode of the number of guesses needed to break the code through all simulations.
+    It also find out if there is more than one mode, so we find if the collection of values is modal, bimodal or multimodal.
+    '''
+    freq = {}
+    for number in numGuessesList:
+        if number not in freq.keys():
+            freq[number] = 0
+        freq[number] += 1
+    
+    value = 0
+    mode = []
+    for number, count in freq.items():
+        if count == value: mode.append(number)
+        elif count > value: 
+            mode = [number]
+            value = count
+
+    print(f"The mode of guesses is: {mode} with a frequency of: {value}")

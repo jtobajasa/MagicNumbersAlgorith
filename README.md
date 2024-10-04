@@ -45,7 +45,7 @@ Reduce the list of possible numbers based on feedback stored in the dictionary w
 This function uses the Minimax strategy to select the next guess. 
 
 ## To Do
-At this moment, optimizing works are needed in order to reduce the simulation time. The main idea to reduce this time is to implement parallel processing, which will be implemented soon.
+At this moment, optimizing works are needed in order to reduce the simulation time. The main idea to reduce this time is to implement parallel processing, which will be implemented soon, and create a file of all feedbacks, to avoid calculate them every time the simulation starts.
 
 The other point to work on is to change the engine to work with classes instead of different functions.
 

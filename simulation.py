@@ -1,7 +1,7 @@
 from engine import *
 
 def main():
-    NUM_SIMULATIONS = 1000
+    NUM_SIMULATIONS = 100
     numGuessesList = []  # List containing needed guesses to win in each round
     
     # Generate the full list of numbers and precalculate all feedbacks
@@ -9,6 +9,7 @@ def main():
     print("Precalculating feedbacks...")
     feedbacksTable = precalcFeedbacks(NUMBER_LIST)
     print("Done!")
+    print("Start game simulations")
 
     for i in range(NUM_SIMULATIONS):
         numListCopy = NUMBER_LIST[:]  # List of remaining possible numbers
@@ -27,15 +28,16 @@ def main():
 
             # Reduce the list of possible numbers based on the feedback
             numListCopy = reduce(numListCopy, guess, feedback, feedbacksTable)
-            ##print(f"Remaining possibilities: {len(numListCopy)}")
+
 
             # Use Minimax strategy to select the next guess
             guess = selectGuess(numListCopy, feedbacksTable)
     
-    # Calculate and print the average number of guesses
-    average = sum(numGuessesList) / len(numGuessesList)
-    print(f"Simulation of {NUM_SIMULATIONS} games completed.")
-    print(f"The average tries needed to guess the number is: {average:.2f}")
+    # Calculate and print the average number of guesses through all simulations
+    average(numGuessesList, NUM_SIMULATIONS)
+
+    #Calculate the mode of the guesses through all simulations
+    mode(numGuessesList)
 
 if __name__ == "__main__":
     main()
