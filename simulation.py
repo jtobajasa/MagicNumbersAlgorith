@@ -1,21 +1,34 @@
 from engine import *
+import os
+import time
 
 def main():
-    NUM_SIMULATIONS = 100
+    startTime = time.time()
+    NUM_SIMULATIONS = 10
     numGuessesList = []  # List containing needed guesses to win in each round
     
     # Generate the full list of numbers and precalculate all feedbacks
     NUMBER_LIST = generateNumberList() 
-    print("Precalculating feedbacks...")
-    feedbacksTable = precalcFeedbacks(NUMBER_LIST)
-    print("Done!")
+
+    #Checks if feedbacks files exists
+    feedbacksFilename = "feedbacksTable"
+    if os.path.exists(feedbacksFilename):
+        print("Loading feedbacks...")
+        feedbacksTable = file2feedbacks(feedbacksFilename)
+    else:
+        # Generate all possible feedbacks for each number combination
+        print("Precalculating feedbacks...")
+        feedbacksTable = precalcFeedbacks(NUMBER_LIST)
+        feedbacks2file(feedbacksTable, feedbacksFilename)
+        print("Done!")
+    
     print("Start game simulations")
 
     for i in range(NUM_SIMULATIONS):
         numListCopy = NUMBER_LIST[:]  # List of remaining possible numbers
         secret = chooseRandomNumber(NUMBER_LIST)  # Choose the secret number randomly
         totalGuesses = 0
-        guess = "0123"  # Initial guess (following Knuth's strategy)
+        guess = "1234"  # Initial guess (following Knuth's strategy)
 
         while True:
             totalGuesses += 1
@@ -33,11 +46,14 @@ def main():
             # Use Minimax strategy to select the next guess
             guess = selectGuess(numListCopy, feedbacksTable)
     
+    endTime = time.time()
+    print(f"Simulation completed in {endTime - startTime:.2f}")
+
     # Calculate and print the average number of guesses through all simulations
     average(numGuessesList, NUM_SIMULATIONS)
 
     #Calculate the mode of the guesses through all simulations
     mode(numGuessesList)
-
+    
 if __name__ == "__main__":
     main()

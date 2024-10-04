@@ -1,4 +1,5 @@
 import random
+import pickle
 
 def generateNumberList():
     '''
@@ -70,6 +71,28 @@ def randomGuess(numberList):
     return numberList[index], index
 
 '''
+Save and load a file of precalcFeedback
+'''
+
+def feedbacks2file(feedbackTable, filename="feedbacksTable"):
+    '''
+    Serializes and saves the feedbacks table to a file.
+    '''
+    with open(filename, 'wb') as file:
+        pickle.dump(feedbackTable, file)
+    print(f"Feedbacks table saved to {filename}")
+
+def file2feedbacks(filename="feedbacksTable"):
+    '''
+    Loads serialized feedbacks from a file.
+    '''
+    with open(filename, 'rb') as file:
+        feedbackTable = pickle.load(file)
+    print(f"Feedbacks table loaded from {filename}")
+    
+    return feedbackTable
+
+'''
 To apply the Knuth algorithm
 '''
 
@@ -132,3 +155,7 @@ def mode(numGuessesList):
             value = count
 
     print(f"The mode of guesses is: {mode} with a frequency of: {value}")
+    print(f"Frequency table:")
+    
+    for item in freq.items():
+        print(f"Frequency of: {item}")
