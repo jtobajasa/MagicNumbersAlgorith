@@ -114,13 +114,17 @@ def selectGuess(numberList, feedbacksTable):
             if feedback not in feedbackGroups: feedbackGroups[feedback] = 0
             feedbackGroups[feedback] += 1
             if feedbackGroups[feedback] > minWorstCase: break
+        
+        print(f"Feedback groups: {feedbackGroups}")
 
         worstCase = max(feedbackGroups.values())
         
         if worstCase < minWorstCase:
             minWorstCase = worstCase
             bestGuess = guess
-    
+
+        print(f"worst case: {worstCase}")
+
     return bestGuess
 
 

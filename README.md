@@ -47,6 +47,6 @@ This function uses the Minimax strategy to select the next guess.
 ## To Do
 At this moment, optimizing works are needed in order to reduce the simulation time. The main idea to reduce this time is to implement parallel processing, which will be implemented soon, and create a file of all feedbacks, to avoid calculate them every time the simulation starts.
 
-The other point to work on is to change the engine to work with classes instead of different functions.
+The other point to work on is to change the engine to work with classes instead of different functions and add static typing of code.
 
 Finally, in order to deeply understand the statistics of this algorithm when applied to Magic Numbers, new statistical functionalities are needed.

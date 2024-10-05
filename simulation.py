@@ -4,7 +4,7 @@ import time
 
 def main():
     startTime = time.time()
-    NUM_SIMULATIONS = 500
+    NUM_SIMULATIONS = 10
     numGuessesList = []  # List containing needed guesses to win in each round
     
     # Generate the full list of numbers and precalculate all feedbacks
