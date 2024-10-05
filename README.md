@@ -8,12 +8,12 @@ There are two main differences:
 - While in Mastermind you have 6 possible colors (or numbers), in Magic Numbers you have 10 different numbers (from 0 to 9).
 - While in Mastermind you can repeat colors, in Magic Numbers the secret code is build with 4 unique numbers.
 
-## How it works
-
 ## The main idea of the algorithm
 After a research, it has been found that the best algorithm to found the secret guess using minimum guesses was the Knuth algorithm (Knuth, 1976-77), which is based in the Minimax strategy. Applying this algorithm to Mastermind, it is possible to crash the secret code with a maximum number of guesses of 5. So in this code, it has been implemented this algorithm in order to solve it using the minimum number of guesses.
 
 Because of the differences between Mastermind and Magic Numbers, it has been shown that the minimum number of guesses needed to crash the number is bigger in Magic Numbers than in Mastermind.
+
+## How it works
 
 ### Functions to simulate games
 
