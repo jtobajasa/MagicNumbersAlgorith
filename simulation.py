@@ -37,7 +37,7 @@ def main():
 
             if feedback[0] == 4:  # If 4 mates, the guess is correct
                 numGuessesList.append(totalGuesses)
-                print(f"Round finished in {totalGuesses} guesses.")
+                print(f"Simulation {i}: Round finished in {totalGuesses} guesses.")
                 break
 
             # Reduce the list of possible numbers based on the feedback
