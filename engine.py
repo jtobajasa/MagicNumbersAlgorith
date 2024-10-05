@@ -110,9 +110,10 @@ def selectGuess(numberList, feedbacksTable):
         
         for number in numberList:
             feedback = feedbacksTable[(guess, number)]
-            if feedback not in feedbackGroups:
-                feedbackGroups[feedback] = 0
+
+            if feedback not in feedbackGroups: feedbackGroups[feedback] = 0
             feedbackGroups[feedback] += 1
+            if feedbackGroups[feedback] > minWorstCase: break
 
         worstCase = max(feedbackGroups.values())
         

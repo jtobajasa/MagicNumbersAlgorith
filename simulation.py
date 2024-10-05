@@ -4,7 +4,7 @@ import time
 
 def main():
     startTime = time.time()
-    NUM_SIMULATIONS = 10
+    NUM_SIMULATIONS = 500
     numGuessesList = []  # List containing needed guesses to win in each round
     
     # Generate the full list of numbers and precalculate all feedbacks
@@ -21,9 +21,10 @@ def main():
         feedbacksTable = precalcFeedbacks(NUMBER_LIST)
         feedbacks2file(feedbacksTable, feedbacksFilename)
         print("Done!")
-    
+    endTime = time.time()
+    print(f"Loading time: {endTime - startTime} seconds.")
     print("Start game simulations")
-
+    startTime = time.time()
     for i in range(NUM_SIMULATIONS):
         numListCopy = NUMBER_LIST[:]  # List of remaining possible numbers
         secret = chooseRandomNumber(NUMBER_LIST)  # Choose the secret number randomly
@@ -41,7 +42,6 @@ def main():
 
             # Reduce the list of possible numbers based on the feedback
             numListCopy = reduce(numListCopy, guess, feedback, feedbacksTable)
-
 
             # Use Minimax strategy to select the next guess
             guess = selectGuess(numListCopy, feedbacksTable)
